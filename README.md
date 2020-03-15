@@ -13,7 +13,7 @@
 
 - nodejs
 
-> 使用方式
+> 使用方式（源文件支持相对路径和绝对路径两种输入方式）
 
 ```
 1. convert language json file to excel file, Example call:
