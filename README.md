@@ -21,3 +21,7 @@
 2. convert excel file to language json file, Example call:
   json2excel -r ../helloworld.xlsx
 ```
+
+## 其他文档
+
+[发布 node 模块](./docs/publish-node-readme.md)
