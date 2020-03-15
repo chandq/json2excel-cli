@@ -26,7 +26,7 @@ const excel2json = function(fileName = "hello") {
   // );
   // console.timeEnd("sheet_to_json");
 
-  console.time("customlize generate JSON");
+  // console.time("customlize generate JSON");
   sheet_name_list.forEach(function(y) {
     var worksheet = workbook.Sheets[y];
     var headers = {};
@@ -58,9 +58,8 @@ const excel2json = function(fileName = "hello") {
     data.shift();
     data.shift();
     jsonArr.push(data);
-    console.log(data);
   });
-  console.timeEnd("customlize generate JSON");
+  // console.timeEnd("customlize generate JSON");
   return jsonArr;
 };
 
@@ -83,7 +82,6 @@ const json2FormatLangObj = function(arr) {
     }
   };
   arr.forEach((v, i) => {
-    // console.log("sd: ", i, v);
     !v.key && (v.key = "xiaoyaozi-" + i);
     if (v.key.includes(".")) {
       assignValue(v, zh, en, v.key.split("."));
@@ -92,21 +90,20 @@ const json2FormatLangObj = function(arr) {
       en[v.key] = v["英文"];
     }
   });
-  // console.log("zh:%o， en:%o", zh, en);
   return { zh, en };
 };
 
 // 将多语言JSON对象写入文件
-const writeToFile = function(data, fileName = "helloworld") {
+const writeToFile = function(dirname, data, fileName = "helloworld") {
   const path = require("path");
   const { writeFile } = require("fs").promises;
   // zh语言对象写入文件
-  writeFile(path.resolve(__dirname, `../${fileName}_zh.json`), JSON.stringify(data.zh, null, 2)).catch(error => {
-    console.log(error);
+  writeFile(path.resolve(dirname, `../${fileName}_zh.json`), JSON.stringify(data.zh, null, 2)).catch(error => {
+    console.error(error);
   });
   // en语言对象写入文件
-  writeFile(path.resolve(__dirname, `../${fileName}_en.json`), JSON.stringify(data.en, null, 2)).catch(error => {
-    console.log(error);
+  writeFile(path.resolve(dirname, `../${fileName}_en.json`), JSON.stringify(data.en, null, 2)).catch(error => {
+    console.error(error);
   });
 };
 module.exports = {

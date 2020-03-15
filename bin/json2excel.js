@@ -26,22 +26,22 @@ program
   })
   .parse(process.argv); // 拿到 package.json 你定义的版本
 executeCommand();
+
 function executeCommand() {
   const args = minimist(process.argv.slice(2)); //前两个是编译器相关路径信息，可以忽略
-  console.log("args: ", args);
   let cmd = args._;
   if (args.r && [1, 0].includes(cmd.length)) {
     const spinner = getSpinner();
 
     const jsonArr = excel2json(convertRelativePath(String.raw`${args.r}`));
-    writeToFile(json2FormatLangObj(jsonArr[0]), cmd[0] || "after");
+    writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || "after");
     spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
   } else if (!args.r && [2, 3].includes(cmd.length)) {
     const spinner = getSpinner();
 
     let zhJSON = require(convertRelativePath(String.raw`${cmd[0]}`));
     let enJSON = require(convertRelativePath(String.raw`${cmd[1]}`));
-    json2excel(zhJSON, enJSON, cmd[2] || "HelloWorld.xlsx");
+    json2excel(process.cwd(), zhJSON, enJSON, cmd[2] || "HelloWorld.xlsx");
     spinner.succeed("处理完成"); // 加载状态 => 成功状态
   } else {
     console.log(chalk.red("命令参数不对，请重新输入"));
@@ -61,7 +61,7 @@ function getSpinner() {
 }
 // return relative path
 function convertRelativePath(pathname) {
-  // console.log(__dirname, path.isAbsolute(pathname), path.relative(__dirname, pathname))
+  // console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(__dirname, pathname));
   return path
     .relative(__dirname, pathname)
     .split(path.sep)

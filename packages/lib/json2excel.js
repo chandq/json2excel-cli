@@ -6,7 +6,7 @@
  * @depedence Node环境，安装xlsx模块
  */
 
-const json2Excel = function(zh, en, fileName) {
+const json2Excel = function(dirname, zh, en, fileName) {
   let zh_arr = [],
     en_arr = [],
     zhen_xlsxArr = [];
@@ -53,7 +53,7 @@ const json2Excel = function(zh, en, fileName) {
       ["英文"]: enValue || ""
     });
   }
-  console.log("em: ", zh_arr, en_arr, zhen_xlsxArr);
+  // console.log("em: ", zh_arr, en_arr, zhen_xlsxArr);
   const path = require("path");
   const xlsx = require("xlsx"),
     { utils } = xlsx;
@@ -74,9 +74,8 @@ const json2Excel = function(zh, en, fileName) {
     compression: true // 开启zip压缩
   });
   // 写入文件
-  writeFile(path.resolve(__dirname, `../${fileName}`), result).catch(error => {
+  writeFile(path.resolve(dirname, `${fileName}`), result).catch(error => {
     console.log(error);
   });
-  console.log("workSheet: ", workSheet);
 };
 module.exports = json2Excel;
