@@ -16,11 +16,12 @@ program
   .on("--help", () => {
     console.log("");
     console.log(
-      chalk.blueBright(`Support two mode:
+      chalk.magentaBright(`Support two mode:
       1. convert language json file to excel file, Example call:
-        json2excel ../zh-cn.json ../en.json helloworld.xlsx
+        ${chalk.yellow("json2excel <../zh-cn.json> <../en.json> [helloworld.xlsx]")}
       2. convert excel file to language json file, Example call:
-        json2excel -r ../helloworld.xlsx
+        ${chalk.yellow("json2excel -r <../helloworld.xlsx> [helloworld]")}
+      PS：<>表示必填，[]表示选填
     `)
     );
   })
@@ -34,14 +35,14 @@ function executeCommand() {
     const spinner = getSpinner();
 
     const jsonArr = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.r}`));
-    writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || "after");
+    writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || "helloworld");
     spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
   } else if (!args.r && [2, 3].includes(cmd.length)) {
     const spinner = getSpinner();
 
     let zhJSON = require(convertRelativePath(__dirname, String.raw`${cmd[0]}`));
     let enJSON = require(convertRelativePath(__dirname, String.raw`${cmd[1]}`));
-    json2excel(process.cwd(), zhJSON, enJSON, cmd[2] || "HelloWorld.xlsx");
+    json2excel(process.cwd(), zhJSON, enJSON, cmd[2] || "helloworld.xlsx");
     spinner.succeed("处理完成"); // 加载状态 => 成功状态
   } else {
     console.log(chalk.red("命令参数不对，请重新输入"));
