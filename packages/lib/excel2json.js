@@ -10,13 +10,13 @@
  */
 
 // 读取多语言对照表的excel文件，并转换为JSON对象
-const excel2json = function(fileName = "hello") {
+const excel2json = function(dirname, fileName = "hello.xlsx") {
   let jsonArr = [];
   const xlsx = require("xlsx"),
     { utils } = xlsx;
   const path = require("path");
   // 获取数据
-  const workbook = xlsx.readFile(path.resolve(__dirname, `../${fileName}`));
+  const workbook = xlsx.readFile(path.resolve(dirname, fileName));
   var sheet_name_list = workbook.SheetNames;
   // console.time("sheet_to_json");
   // console.log(
@@ -98,11 +98,11 @@ const writeToFile = function(dirname, data, fileName = "helloworld") {
   const path = require("path");
   const { writeFile } = require("fs").promises;
   // zh语言对象写入文件
-  writeFile(path.resolve(dirname, `../${fileName}_zh.json`), JSON.stringify(data.zh, null, 2)).catch(error => {
+  writeFile(path.resolve(dirname, `${fileName}_zh.json`), JSON.stringify(data.zh, null, 2)).catch(error => {
     console.error(error);
   });
   // en语言对象写入文件
-  writeFile(path.resolve(dirname, `../${fileName}_en.json`), JSON.stringify(data.en, null, 2)).catch(error => {
+  writeFile(path.resolve(dirname, `${fileName}_en.json`), JSON.stringify(data.en, null, 2)).catch(error => {
     console.error(error);
   });
 };

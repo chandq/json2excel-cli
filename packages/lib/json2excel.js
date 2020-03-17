@@ -74,7 +74,7 @@ const json2Excel = function(dirname, zh, en, fileName) {
     compression: true // 开启zip压缩
   });
   // 写入文件
-  writeFile(path.resolve(dirname, `${fileName}`), result).catch(error => {
+  writeFile(path.resolve(dirname, fileName), result).catch(error => {
     console.log(error);
   });
 };

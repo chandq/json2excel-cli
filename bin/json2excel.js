@@ -33,14 +33,14 @@ function executeCommand() {
   if (args.r && [1, 0].includes(cmd.length)) {
     const spinner = getSpinner();
 
-    const jsonArr = excel2json(convertRelativePath(String.raw`${args.r}`));
+    const jsonArr = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.r}`));
     writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || "after");
     spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
   } else if (!args.r && [2, 3].includes(cmd.length)) {
     const spinner = getSpinner();
 
-    let zhJSON = require(convertRelativePath(String.raw`${cmd[0]}`));
-    let enJSON = require(convertRelativePath(String.raw`${cmd[1]}`));
+    let zhJSON = require(convertRelativePath(__dirname, String.raw`${cmd[0]}`));
+    let enJSON = require(convertRelativePath(__dirname, String.raw`${cmd[1]}`));
     json2excel(process.cwd(), zhJSON, enJSON, cmd[2] || "HelloWorld.xlsx");
     spinner.succeed("处理完成"); // 加载状态 => 成功状态
   } else {
@@ -60,10 +60,10 @@ function getSpinner() {
   return spinner;
 }
 // return relative path
-function convertRelativePath(pathname) {
-  // console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(__dirname, pathname));
+function convertRelativePath(dirname, pathname) {
+  // console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(dirname, pathname));
   return path
-    .relative(__dirname, pathname)
+    .relative(dirname, pathname)
     .split(path.sep)
     .join("/");
 }
