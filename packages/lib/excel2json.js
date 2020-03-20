@@ -98,13 +98,14 @@ const writeToFile = function(dirname, data, fileName = "helloworld") {
   const path = require("path");
   const { writeFile } = require("fs").promises;
   // zh语言对象写入文件
-  writeFile(path.resolve(dirname, `${fileName}_zh.json`), JSON.stringify(data.zh, null, 2)).catch(error => {
-    console.error(error);
-  });
+  const zhPromise = function() {
+    return writeFile(path.resolve(dirname, `${fileName}_zh.json`), JSON.stringify(data.zh, null, 2));
+  };
   // en语言对象写入文件
-  writeFile(path.resolve(dirname, `${fileName}_en.json`), JSON.stringify(data.en, null, 2)).catch(error => {
-    console.error(error);
-  });
+  const enPromise = function() {
+    return writeFile(path.resolve(dirname, `${fileName}_en.json`), JSON.stringify(data.en, null, 2));
+  };
+  return Promise.all([zhPromise(), enPromise()]);
 };
 module.exports = {
   excel2json,
