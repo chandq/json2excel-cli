@@ -1,6 +1,6 @@
 {
   "name": "json-excel-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Convert language json file to excel file, convert excel file to language json file",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "json, excel, internationalization, json2excel, json-excel-cli"
+    "json",
+    "excel",
+    "internationalization",
+    "json2excel",
+    "json-excel-cli"
   ],
   "author": "chendq",
   "repository": {
@@ -25,5 +29,6 @@
     "minimist": "^1.2.5",
     "ora": "^4.0.3",
     "xlsx": "^0.15.6"
-  }
+  },
+  "devDependencies": {}
 }
