@@ -1,5 +1,7 @@
 ## json2excel - 多语言资源文件转换成 excel 表
 
+> 🦅 Support English and Chinese language json file and excel file conversion
+
 ### 支持中英文语言 json 文件和中英文对照表 excel 文件互相转换，提高国际化开发效率
 
 > 主要功能：
