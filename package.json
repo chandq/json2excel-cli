@@ -1,7 +1,7 @@
 {
   "name": "json-excel-cli",
-  "version": "1.0.9",
-  "description": "Support multi-language file and Chinese-English comparison table excel file conversion",
+  "version": "1.0.10",
+  "description": "🦅 Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
     "json2excel": "./bin/json2excel.js"
@@ -38,7 +38,6 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "commander": "^5.0.0",
-    "inquirer": "^7.1.0",
     "minimist": "^1.2.5",
     "ora": "^4.0.3",
     "xlsx": "^0.15.6"

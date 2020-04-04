@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const program = require("commander");
-// const inquirer = require("inquirer");
 const minimist = require("minimist");
 const chalk = require("chalk");
 const path = require("path");
@@ -8,8 +7,6 @@ const ora = require("ora");
 const json2excel = require("../packages/lib/json2excel");
 const { excel2json, json2FormatLangObj, writeToFile } = require("../packages/lib/excel2json");
 var appInfo = require(path.resolve(__dirname, "../package.json"));
-// var inquireTipConfig = require("../packages/lib/inquire-tip-config.js");
-// let configTemp = {};
 program
   .version(appInfo.version, "-v, --version")
   .option("-r, --reverse <path>", "convert excel to json")
@@ -113,51 +110,3 @@ function mergeKeyValue(targetENObj, sourceZhObj, sourceEnObj, excelObj) {
     }
   }
 }
-// Commands 操作
-// program
-//   // 命令与参数: <> 必填; [] 选填
-//   .command("exec <cmd> [env] [env]")
-//   // 别名
-//   .alias("ex")
-//   // 帮助信息
-//   .description("execute the given remote cmd")
-//   // 执行的操作
-//   .action((cmd, env, options) => {
-//     // 参数可以拿到
-//     console.log(`env is ${env}`, process.argv);
-//     console.log('exec "%s" using %s mode', cmd, options.exec_mode);
-//   })
-//   .parse(process.argv);
-
-/**
- * @description 交互命令操作
- * @author chendq
- * @date 2020-03-15
- */
-// inquirer.prompt(inquireTipConfig.type).then(function(args) {
-//   assignConfig(args);
-//   if (configTemp.operateType === 1) {
-//     json2excelInit();
-//   } else {
-//     excel2jsonInit();
-//   }
-// });
-/* function excel2jsonInit() {
-  inquirer.prompt(inquireTipConfig.excel2jsonInit).then(function(args) {
-    assignConfig(args, true);
-  });
-}
-//json转换生成excel
-function json2excelInit() {
-  inquirer.prompt(inquireTipConfig.json2excelInit).then(function(args) {
-    assignConfig(args, true);
-  });
-}
-function assignConfig(args, last) {
-  configTemp = Object.assign(configTemp, args);
-  console.log("configTemp: ", configTemp);
-  if (last) {
-    createrFn();
-  }
-}
- */
