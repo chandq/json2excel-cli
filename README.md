@@ -1,6 +1,6 @@
-## json2excel - 多语言资源文件转换成 excel 表
+## json-excel-cli - 多语言资源文件转换成 excel 表
 
-> 🦅 Support multi-language file and Chinese-English comparison table excel file conversion
+> 🦅 一个基于 node 和 xlsx 的 json 和 excel 互相转换的命令行工具
 
 ### 支持中英文语言 json 或 js 文件和中英文对照表 excel 文件互相转换，提高国际化开发效率
 
