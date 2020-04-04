@@ -1,6 +1,6 @@
 {
   "name": "json-excel-cli",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
@@ -28,7 +28,7 @@
     "type": "git",
     "url": "https://github.com/chandq/json2excel-cli"
   },
-  "licenses": [
+  "license": [
     {
       "type": "MIT",
       "url": "https://github.com/chandq/json2excel-cli#license"
