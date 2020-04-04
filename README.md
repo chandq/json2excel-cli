@@ -1,8 +1,8 @@
 ## json2excel - 多语言资源文件转换成 excel 表
 
-> 🦅 Support English and Chinese language json file and excel file conversion
+> 🦅 Support multi-language file and Chinese-English comparison table excel file conversion
 
-### 支持中英文语言 json 文件和中英文对照表 excel 文件互相转换，提高国际化开发效率
+### 支持中英文语言 json 或 js 文件和中英文对照表 excel 文件互相转换，提高国际化开发效率
 
 > 主要功能：
 
@@ -12,8 +12,9 @@
 
 > 应用场景
 
-- 项目工程中需要支持国际化，将工程里中英文资源 json 文件转换成中英文对照表，提供给专业人员翻译（适合使用方式 1 的需求）
-- 以工程里持续变化的中文语言文件为依据，结合专业人员翻译并提供的中英文对照表和原英文语言文件，进行增量合并，生成新的中英文 json 文件（适合使用方式 3 的需求）
+- 项目工程中需要支持国际化，将工程里中英文资源 json 或 js(commonJS 导出方式) 文件转换成中英文对照表 excel 文件，提供给专业人员翻译（适合使用方式 1 的需求）
+- 专业人员翻译并提供的中英文对照表 excel 文件，转换成对应的中英文 json 文件（适合使用方式 2 的需求）
+- 以工程里持续变化的中文语言文件为依据，结合专业人员翻译并提供的中英文对照表和原英文语言 json 或 js(commonJS 导出方式)文件，进行增量合并，生成新的中英文 json 文件（适合使用方式 3 的需求）
 
 > 项目依赖
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const program = require("commander");
-const inquirer = require("inquirer");
+// const inquirer = require("inquirer");
 const minimist = require("minimist");
 const chalk = require("chalk");
 const path = require("path");
@@ -8,8 +8,8 @@ const ora = require("ora");
 const json2excel = require("../packages/lib/json2excel");
 const { excel2json, json2FormatLangObj, writeToFile } = require("../packages/lib/excel2json");
 var appInfo = require(path.resolve(__dirname, "../package.json"));
-var inquireTipConfig = require("../packages/lib/inquire-tip-config.js");
-let configTemp = {};
+// var inquireTipConfig = require("../packages/lib/inquire-tip-config.js");
+// let configTemp = {};
 program
   .version(appInfo.version, "-v, --version")
   .option("-r, --reverse <path>", "convert excel to json")
@@ -40,10 +40,10 @@ function executeCommand() {
 
     const jsonArr = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.r}`));
     writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || "helloworld")
-      .then(res => {
+      .then((res) => {
         spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         spinner.fail("处理失败\r\n"); // 加载状态 => 失败状态
       });
@@ -57,10 +57,10 @@ function executeCommand() {
     let newData = { zh: source_zhJSON, en: {} };
     mergeKeyValue(newData.en, source_zhJSON, source_enJSON, excelData.en);
     writeToFile(process.cwd(), newData, cmd[2] || "helloworld")
-      .then(res => {
+      .then((res) => {
         spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         spinner.fail("处理失败\r\n"); // 加载状态 => 失败状态
       });
@@ -70,10 +70,10 @@ function executeCommand() {
     const zhJSON = require(convertRelativePath(__dirname, String.raw`${cmd[0]}`));
     const enJSON = require(convertRelativePath(__dirname, String.raw`${cmd[1]}`));
     json2excel(process.cwd(), zhJSON, enJSON, cmd[2] || "helloworld.xlsx")
-      .then(res => {
+      .then((res) => {
         spinner.succeed("处理完成\r\n"); // 加载状态 => 成功状态
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         spinner.fail("处理失败\r\n"); // 加载状态 => 失败状态
       });
@@ -85,19 +85,12 @@ function executeCommand() {
 // define function of show process progress information
 function getSpinner() {
   let spinner = ora({ text: "正在处理中...\r\n" }).start(); // 开始状态 => 加载状态
-  // setTimeout(() => {
-  //   spinner.color = "yellow";
-  //   spinner.text = "网速有点慢\r\n";
-  // }, 5000); // 还是 加载状态, 更新文案和颜色
   return spinner;
 }
 // return relative path
 function convertRelativePath(dirname, pathname) {
   // console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(dirname, pathname));
-  return path
-    .relative(dirname, pathname)
-    .split(path.sep)
-    .join("/");
+  return path.relative(dirname, pathname).split(path.sep).join("/");
 }
 // 增量合并，以原中文json文件为依据，结合原英文json文件和专业翻译人员提供的中英文对照表生成新的中英文json文件
 function mergeKeyValue(targetENObj, sourceZhObj, sourceEnObj, excelObj) {
@@ -149,7 +142,7 @@ function mergeKeyValue(targetENObj, sourceZhObj, sourceEnObj, excelObj) {
 //     excel2jsonInit();
 //   }
 // });
-function excel2jsonInit() {
+/* function excel2jsonInit() {
   inquirer.prompt(inquireTipConfig.excel2jsonInit).then(function(args) {
     assignConfig(args, true);
   });
@@ -167,3 +160,4 @@ function assignConfig(args, last) {
     createrFn();
   }
 }
+ */
