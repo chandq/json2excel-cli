@@ -39,6 +39,10 @@
   json2excel -m <../helloworld.xlsx> <../source-zh-cn.json> <../source-en.json> [helloworld]
 ```
 
+## git 提交规范
+
+[git commit 规范](./.gitmessage.txt)
+
 ## 其他文档
 
 [发布 node 模块](./docs/publish-node-readme.md)

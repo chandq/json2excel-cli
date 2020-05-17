@@ -31,7 +31,7 @@ const excel2json = function (dirname, fileName = 'hello.xlsx') {
     var worksheet = workbook.Sheets[y]
     var headers = {}
     var data = []
-    for (z in worksheet) {
+    for (var z in worksheet) {
       if (z[0] === '!') continue
       //parse out the column, row, and value
       var tt = 0

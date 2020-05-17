@@ -4,7 +4,13 @@
   "description": "🦅 Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
-    "json2excel": "./bin/json2excel.js"
+    "json2excel": "./bin/json2excel.js",
+    "fix": "eslint --ext .js,.vue,.css --fix",
+    "release:prerelease": "standard-version --prerelease",
+    "release:prefix": "standard-version --prerelease alpha",
+    "release:patch": "standard-version --release-as patch && git push origin master",
+    "release:minor": "standard-version --release-as minor && git push --follow-tags origin master",
+    "release:major": "standard-version --release-as major && git push --follow-tags origin master"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,12 +34,7 @@
     "type": "git",
     "url": "https://github.com/chandq/json2excel-cli"
   },
-  "license": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/chandq/json2excel-cli#license"
-    }
-  ],
+  "license": "MIT",
   "homepage": "https://github.com/chandq/json2excel-cli#readme",
   "dependencies": {
     "chalk": "^3.0.0",
@@ -42,5 +43,29 @@
     "ora": "^4.0.3",
     "xlsx": "^0.15.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "standard-version": "^8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }
