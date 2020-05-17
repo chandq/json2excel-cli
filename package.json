@@ -4,16 +4,16 @@
   "description": "🦅 Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
-    "json2excel": "./bin/json2excel.js",
+    "json2excel": "./bin/json2excel.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "fix": "eslint --ext .js,.vue,.css --fix",
     "release:prerelease": "standard-version --prerelease",
     "release:prefix": "standard-version --prerelease alpha",
     "release:patch": "standard-version --release-as patch && git push origin master",
     "release:minor": "standard-version --release-as minor && git push --follow-tags origin master",
     "release:major": "standard-version --release-as major && git push --follow-tags origin master"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "MIT-licensed",
