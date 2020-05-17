@@ -1,6 +1,6 @@
 {
   "name": "json-excel-cli",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "🦅 Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
     "fix": "eslint --ext .js,.vue,.css --fix",
     "release:prerelease": "standard-version --prerelease",
     "release:prefix": "standard-version --prerelease alpha",
-    "release:patch": "standard-version --release-as patch && git push origin master",
+    "release:patch": "standard-version --release-as patch && git push origin master && npm publish",
     "release:minor": "standard-version --release-as minor && git push --follow-tags origin master",
     "release:major": "standard-version --release-as major && git push --follow-tags origin master"
   },
