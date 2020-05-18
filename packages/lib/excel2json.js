@@ -11,14 +11,14 @@
 
 // 读取多语言对照表的excel文件，并转换为JSON对象
 const excel2json = function (dirname, fileName = 'hello.xlsx') {
-  let jsonArr = []
-  const xlsx = require('xlsx'),
-    { utils } = xlsx
+  let jsonArray = []
+  const xlsx = require('xlsx')
+  // Const { utils } = xlsx
   const path = require('path')
   // 获取数据
   const workbook = xlsx.readFile(path.resolve(dirname, fileName))
-  var sheet_name_list = workbook.SheetNames
-  // console.time("sheet_to_json");
+  const sheet_name_list = workbook.SheetNames
+  // Console.time("sheet_to_json");
   // console.log(
   //   xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]], {
   //     defval: ""
@@ -27,61 +27,70 @@ const excel2json = function (dirname, fileName = 'hello.xlsx') {
   // console.timeEnd("sheet_to_json");
 
   // console.time("customlize generate JSON");
-  sheet_name_list.forEach(function (y) {
-    var worksheet = workbook.Sheets[y]
-    var headers = {}
-    var data = []
-    for (var z in worksheet) {
-      if (z[0] === '!') continue
-      //parse out the column, row, and value
-      var tt = 0
-      for (var i = 0; i < z.length; i++) {
+  sheet_name_list.forEach(y => {
+    const worksheet = workbook.Sheets[y]
+    let headers = {}
+    let data = []
+    for (const z in worksheet) {
+      if (z[0] === '!') {
+        continue
+      }
+
+      // Parse out the column, row, and value
+      let tt = 0
+      for (let i = 0; i < z.length; i++) {
         if (!isNaN(z[i])) {
           tt = i
           break
         }
       }
-      var col = z.substring(0, tt)
-      var row = parseInt(z.substring(tt))
-      var value = worksheet[z].v
 
-      //store header names
-      if (row == 1 && value) {
+      const col = z.substring(0, tt)
+      const row = parseInt(z.substring(tt), 10)
+      const value = worksheet[z].v
+
+      // Store header names
+      if (row === 1 && value) {
         headers[col] = value
         continue
       }
 
-      if (!data[row]) data[row] = {}
+      if (!data[row]) {
+        data[row] = {}
+      }
+
       data[row][headers[col]] = value
     }
-    //drop those first two rows which are empty
+
+    // Drop those first two rows which are empty
     data.shift()
     data.shift()
-    jsonArr.push(data)
+    jsonArray.push(data)
   })
-  // console.timeEnd("customlize generate JSON");
-  return jsonArr
+  // Console.timeEnd("customlize generate JSON");
+  return jsonArray
 }
 
 // 将JSON对象格式化为不同语言的JSON对象
-const json2FormatLangObj = function (arr) {
-  let zh = {},
-    en = {}
-  const assignValue = function (originObj, zh_target_obj, en_target_obj, keysArr) {
-    !zh_target_obj && (zh_target_obj = {})
-    !en_target_obj && (en_target_obj = {})
-    if (keysArr.length > 1) {
-      !zh_target_obj[keysArr[0]] && (zh_target_obj[keysArr[0]] = {})
-      !en_target_obj[keysArr[0]] && (en_target_obj[keysArr[0]] = {})
-      let key = keysArr[0]
-      keysArr.shift()
-      assignValue(originObj, zh_target_obj[key], en_target_obj[key], keysArr)
+const json2FormatLangObject = function (array) {
+  let zh = {}
+  let en = {}
+  const assignValue = function (originObject, zh_target_object, en_target_object, keysArray) {
+    !zh_target_object && (zh_target_object = {})
+    !en_target_object && (en_target_object = {})
+    if (keysArray.length > 1) {
+      !zh_target_object[keysArray[0]] && (zh_target_object[keysArray[0]] = {})
+      !en_target_object[keysArray[0]] && (en_target_object[keysArray[0]] = {})
+      const key = keysArray[0]
+      keysArray.shift()
+      assignValue(originObject, zh_target_object[key], en_target_object[key], keysArray)
     } else {
-      zh_target_obj[keysArr[0]] = originObj['简体中文']
-      en_target_obj[keysArr[0]] = originObj['英文']
+      zh_target_object[keysArray[0]] = originObject['简体中文']
+      en_target_object[keysArray[0]] = originObject['英文']
     }
   }
-  arr.forEach((v, i) => {
+
+  array.forEach((v, i) => {
     !v.key && (v.key = 'xiaoyaozi-' + i)
     if (v.key.includes('.')) {
       assignValue(v, zh, en, v.key.split('.'))
@@ -97,18 +106,21 @@ const json2FormatLangObj = function (arr) {
 const writeToFile = function (dirname, data, fileName = 'helloworld') {
   const path = require('path')
   const { writeFile } = require('fs').promises
-  // zh语言对象写入文件
+  // Zh语言对象写入文件
   const zhPromise = function () {
     return writeFile(path.resolve(dirname, `${fileName}_zh.json`), JSON.stringify(data.zh, null, 2))
   }
-  // en语言对象写入文件
+
+  // En语言对象写入文件
   const enPromise = function () {
     return writeFile(path.resolve(dirname, `${fileName}_en.json`), JSON.stringify(data.en, null, 2))
   }
+
   return Promise.all([zhPromise(), enPromise()])
 }
+
 module.exports = {
   excel2json,
-  json2FormatLangObj,
+  json2FormatLangObj: json2FormatLangObject,
   writeToFile
 }

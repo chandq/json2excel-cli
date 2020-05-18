@@ -7,7 +7,11 @@
     "json2excel": "./bin/json2excel.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "xo-lint": "xo",
+    "xo-fix": "xo --fix",
+    "ava": "ava",
+    "test": "xo && nyc  --reporter=html --reporter=lcov ava",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls -v",
     "fix": "eslint --ext .js,.vue,.css --fix",
     "release:prerelease": "standard-version --prerelease",
     "release:prefix": "standard-version --prerelease alpha",
@@ -46,11 +50,44 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "ava": "^3.8.2",
     "babel-eslint": "^10.1.0",
+    "coveralls": "^3.1.0",
     "eslint": "^7.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
-    "standard-version": "^8.0.0"
+    "nyc": "^15.0.1",
+    "standard-version": "^8.0.0",
+    "xo": "^0.30.0"
+  },
+  "xo": {
+    "space": true,
+    "esnext": true,
+    "semicolon": false,
+    "rules": {
+      "no-console": 1,
+      "space-before-function-paren": 0,
+      "unicorn/escape-case": 0,
+      "camelcase": 0,
+      "object-curly-spacing": 0,
+      "allowShortCircuit": 0,
+      "unicorn/prevent-abbreviations": 0,
+      "no-unused-expressions": 0,
+      "no-unused-vars": 0,
+      "no-negated-condition": 0,
+      "unicorn/no-console-spaces": 0,
+      "unicorn/no-for-loop": 0,
+      "unicorn/prefer-string-slice": 0,
+      "prefer-const": 0,
+      "unicorn/prefer-number-properties": 0,
+      "capitalized-comments": 0
+    },
+    "ignores": [
+      "examples/**/*"
+    ]
+  },
+  "ava": {
+    "failfast": true
   },
   "husky": {
     "hooks": {

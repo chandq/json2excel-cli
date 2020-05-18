@@ -6,7 +6,7 @@ const path = require('path')
 const ora = require('ora')
 const json2excel = require('../packages/lib/json2excel')
 const { excel2json, json2FormatLangObj, writeToFile } = require('../packages/lib/excel2json')
-var appInfo = require(path.resolve(__dirname, '../package.json'))
+const appInfo = require(path.resolve(__dirname, '../package.json'))
 program
   .version(appInfo.version, '-v, --version')
   .option('-r, --reverse <path>', 'convert excel to json')
@@ -30,13 +30,13 @@ program
 executeCommand()
 
 function executeCommand() {
-  const args = minimist(process.argv.slice(2)) //前两个是编译器相关路径信息，可以忽略
-  let cmd = args._
+  const args = minimist(process.argv.slice(2)) // 前两个是编译器相关路径信息，可以忽略
+  const cmd = args._
   if (args.r && [1, 0].includes(cmd.length)) {
     const spinner = getSpinner()
 
-    const jsonArr = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.r}`))
-    writeToFile(process.cwd(), json2FormatLangObj(jsonArr[0]), cmd[0] || 'helloworld')
+    const jsonArray = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.r}`))
+    writeToFile(process.cwd(), json2FormatLangObj(jsonArray[0]), cmd[0] || 'helloworld')
       .then(res => {
         spinner.succeed('处理完成\r\n') // 加载状态 => 成功状态
       })
@@ -49,9 +49,9 @@ function executeCommand() {
 
     const source_zhJSON = require(convertRelativePath(__dirname, String.raw`${cmd[0]}`))
     const source_enJSON = require(convertRelativePath(__dirname, String.raw`${cmd[1]}`))
-    const jsonArr = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.m}`))
-    const excelData = json2FormatLangObj(jsonArr[0])
-    let newData = { zh: source_zhJSON, en: {} }
+    const jsonArray = excel2json(process.cwd(), convertRelativePath(process.cwd(), String.raw`${args.m}`))
+    const excelData = json2FormatLangObj(jsonArray[0])
+    const newData = { zh: source_zhJSON, en: {} }
     mergeKeyValue(newData.en, source_zhJSON, source_enJSON, excelData.en)
     writeToFile(process.cwd(), newData, cmd[2] || 'helloworld')
       .then(res => {
@@ -79,33 +79,38 @@ function executeCommand() {
   }
 }
 
-// define function of show process progress information
+// Define function of show process progress information
 function getSpinner() {
-  let spinner = ora({ text: '正在处理中...\r\n' }).start() // 开始状态 => 加载状态
+  const spinner = ora({ text: '正在处理中...\r\n' }).start() // 开始状态 => 加载状态
   return spinner
 }
-// return relative path
+
+// Return relative path
 function convertRelativePath(dirname, pathname) {
-  // console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(dirname, pathname));
+  // Console.log(__dirname, pathname, path.isAbsolute(pathname), path.relative(dirname, pathname));
   return path.relative(dirname, pathname).split(path.sep).join('/')
 }
+
 // 增量合并，以原中文json文件为依据，结合原英文json文件和专业翻译人员提供的中英文对照表生成新的中英文json文件
-function mergeKeyValue(targetENObj, sourceZhObj, sourceEnObj, excelObj) {
-  for (let key in sourceZhObj) {
-    if (sourceZhObj[key]) {
-      if (!targetENObj[key]) {
-        targetENObj[key] = {}
+function mergeKeyValue(targetENObject, sourceZhObject, sourceEnObject, excelObject) {
+  for (const key in sourceZhObject) {
+    if (sourceZhObject[key]) {
+      if (!targetENObject[key]) {
+        targetENObject[key] = {}
       }
-      if (typeof sourceZhObj[key] === 'object') {
-        if (!sourceEnObj[key]) {
-          sourceEnObj[key] = {}
+
+      if (typeof sourceZhObject[key] === 'object') {
+        if (!sourceEnObject[key]) {
+          sourceEnObject[key] = {}
         }
-        if (!excelObj[key]) {
-          excelObj[key] = {}
+
+        if (!excelObject[key]) {
+          excelObject[key] = {}
         }
-        mergeKeyValue(targetENObj[key], sourceZhObj[key], sourceEnObj[key], excelObj[key])
+
+        mergeKeyValue(targetENObject[key], sourceZhObject[key], sourceEnObject[key], excelObject[key])
       } else {
-        targetENObj[key] = excelObj[key] || sourceEnObj[key] || ''
+        targetENObject[key] = excelObject[key] || sourceEnObject[key] || ''
       }
     }
   }
