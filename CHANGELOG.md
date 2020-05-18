@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.13](https://github.com/chandq/json2excel-cli/compare/v1.0.12...v1.0.13) (2020-05-18)
+
+
+### Features
+
+* modify travis.yml ([054300d](https://github.com/chandq/json2excel-cli/commit/054300d286410b96cc9a8cee8f3414d4d17239dc))
+
 ### [1.0.12](https://github.com/chandq/json2excel-cli/compare/v1.0.11...v1.0.12) (2020-05-18)
 
 
