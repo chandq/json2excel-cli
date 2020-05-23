@@ -1,4 +1,4 @@
-# json-excel-cli [![npmjs.com][npmjs-img]][npmjs-url] [![The MIT License][license-img]][license-url]
+# json-excel-cli - 多语言资源文件转换成 excel 表
 
 [![Build Status](https://travis-ci.org/chandq/json2excel-cli.svg?branch=master)](https://travis-ci.org/chandq/json2excel-cli)
 [![Coverage Status](https://coveralls.io/repos/github/chandq/json2excel-cli/badge.svg?branch=master)](https://coveralls.io/github/chandq/json2excel-cli?branch=master)
