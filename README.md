@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/chandq/json2excel-cli.svg?branch=master)](https://travis-ci.org/chandq/json2excel-cli)
 [![Coverage Status](https://coveralls.io/repos/github/chandq/json2excel-cli/badge.svg?branch=master)](https://coveralls.io/github/chandq/json2excel-cli?branch=master)
-[![Npm Version](https://img.shields.io/npm/v/json-excel-cli.svg)](https://www.npmjs.com/package/json-excel-cli)
+[![json-excel-cli](https://img.shields.io/npm/v/json-excel-cli.svg)](https://www.npmjs.com/package/json-excel-cli)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 > 🦅 一个基于 node 和 xlsx 的 json 和 excel 互相转换的命令行工具

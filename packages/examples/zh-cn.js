@@ -41,6 +41,12 @@ module.exports = {
     inputZhAndEn: '请输入仅包含字母或数字的{count}位字符',
     inputInteger: '请输入正整数',
     select: '请选择',
-    noData: '暂无数据'
-  }
+    noData: '暂无数据',
+    sub: {
+      sub2: {
+        a: 'test-ZH'
+      }
+    }
+  },
+  level1: 'level-zh'
 }

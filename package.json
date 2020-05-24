@@ -9,7 +9,6 @@
   "scripts": {
     "xo-lint": "xo",
     "xo-fix": "xo --fix",
-    "ava": "ava",
     "test": "xo && nyc  --reporter=html --reporter=lcov ava",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls -v",
     "fix": "eslint --ext .js,.vue,.css --fix",
