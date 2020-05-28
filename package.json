@@ -1,6 +1,6 @@
 {
   "name": "json-excel-cli",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "🦅 Support multi-language file and Chinese-English comparison table excel file conversion",
   "main": "index.js",
   "bin": {
