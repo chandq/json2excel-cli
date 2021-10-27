@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/chandq/json2excel-cli.svg?branch=master)](https://travis-ci.org/chandq/json2excel-cli)
 [![Coverage Status](https://coveralls.io/repos/github/chandq/json2excel-cli/badge.svg?branch=master)](https://coveralls.io/github/chandq/json2excel-cli?branch=master)
-[![json-excel-cli](https://img.shields.io/npm/v/json-excel-cli.svg)](https://www.npmjs.com/package/json-excel-cli)
+[![json-excel-cli](https://img.shields.io/github/package-json/v/chandq/json2excel-cli)](https://github.com/chandq/json2excel-cli)
 [![license:MIT](https://img.shields.io/npm/l/vue.svg?sanitize=true)](https://www.npmjs.com/package/json-excel-cli#license)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 [![Downloads:?](https://img.shields.io/npm/dm/json-excel-cli.svg?sanitize=true)](https://npmcharts.com/compare/json-excel-cli?minimal=true)
@@ -30,9 +30,9 @@
 > 安装方式
 
 - 全局安装
-  npm install -g json-excel-cli
+  `npm install -g json-excel-cli`
 - 升级最新版
-  npm install -g json-excel-cli@latest
+  `npm install -g json-excel-cli@latest`
 
 > 使用方式（源文件支持相对路径和绝对路径两种输入方式）
 
