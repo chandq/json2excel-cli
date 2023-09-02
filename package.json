@@ -47,7 +47,7 @@
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
+    "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^8.3.4",
     "ava": "^5.2.0",
     "babel-eslint": "^10.1.0",
