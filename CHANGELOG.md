@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.21](https://github.com/chandq/json2excel-cli/compare/v1.0.20...v1.0.21) (2023-09-04)
+
+
+### Bug Fixes
+
+* git flow of release-tag ([94fdfac](https://github.com/chandq/json2excel-cli/commit/94fdface1e008d6c635bb839256e7c6f36a0e772))
+* **publish:** remove useless git flow step and dep ([9c5e97a](https://github.com/chandq/json2excel-cli/commit/9c5e97a09188b0a4db76685b100a3e8c962abf07))
+
 ### [1.0.20](https://github.com/chandq/json2excel-cli/compare/v1.0.19...v1.0.20) (2023-09-04)
 
 
