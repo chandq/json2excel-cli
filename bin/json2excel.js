@@ -1,11 +1,12 @@
 #!/usr/bin/env node
+const path = require('path')
 const program = require('commander')
 const minimist = require('minimist')
 const chalk = require('chalk')
-const path = require('path')
 const ora = require('ora')
 const json2excel = require('../packages/lib/json2excel')
 const { excel2json, json2FormatLangObj, writeToFile } = require('../packages/lib/excel2json')
+
 const appInfo = require(path.resolve(__dirname, '../package.json'))
 program
   .version(appInfo.version, '-v, --version')

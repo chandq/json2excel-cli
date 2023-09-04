@@ -5,8 +5,8 @@
  * @desc Unit test case
  */
 
-const test = require('ava')
 const path = require('path')
+const test = require('ava')
 const json2excel = require('./packages/lib/json2excel')
 const { excel2json, json2FormatLangObj, writeToFile } = require('./packages/lib/excel2json')
 
