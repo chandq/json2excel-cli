@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.19 (2023-09-04)
+
+
+### Features
+
+* add xo, ava, coverage and travis CI ([df497ed](https://github.com/chandq/json2excel-cli/commit/df497ed8b14140ba6e572bd653a5c764c7d426d7))
+* code formatter ([c2a4d90](https://github.com/chandq/json2excel-cli/commit/c2a4d9029d8319cd6923cd1a95bc07009be21002))
+* modify travis.yml ([054300d](https://github.com/chandq/json2excel-cli/commit/054300d286410b96cc9a8cee8f3414d4d17239dc))
+* **utils:** add code specifications ([c1b5854](https://github.com/chandq/json2excel-cli/commit/c1b5854ccaefdd86bd3abfad0cde8cf710e2ea91))
+
+
+### Bug Fixes
+
+* npm发布镜像地址 ([53018a0](https://github.com/chandq/json2excel-cli/commit/53018a0fd10e81409efc34a77cd6291256bd9a6b))
+
 ### 1.0.18 (2021-10-27)
 
 
