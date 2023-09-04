@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.20](https://github.com/chandq/json2excel-cli/compare/v1.0.19...v1.0.20) (2023-09-04)
+
+
+### Bug Fixes
+
+* badge for build status ([ac160c9](https://github.com/chandq/json2excel-cli/commit/ac160c96830b1ea07a1a86950aa33cd972c21d69))
+
 ### 1.0.19 (2023-09-04)
 
 
