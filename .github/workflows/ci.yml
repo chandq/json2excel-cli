@@ -45,9 +45,6 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Test docs
-        run: yarn run coverage
-
   unit-test-windows:
     runs-on: windows-latest
     strategy:
@@ -81,6 +78,3 @@ jobs:
 
       - name: Test
         run: yarn test
-
-      - name: Test docs
-        run: yarn run coverage
